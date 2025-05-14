@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 export const InfiniteMovingCards = ({
   items,
@@ -23,26 +24,6 @@ export const InfiniteMovingCards = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
-    addAnimation();
-  }, []);
-  const [start, setStart] = useState(false);
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
-
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
-        }
-      });
-
-      getDirection();
-      getSpeed();
-      setStart(true);
-    }
-  }
   const getDirection = () => {
     if (containerRef.current) {
       if (direction === "left") {
@@ -58,6 +39,7 @@ export const InfiniteMovingCards = ({
       }
     }
   };
+
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
@@ -69,6 +51,29 @@ export const InfiniteMovingCards = ({
       }
     }
   };
+
+  const addAnimation = React.useCallback(() => {
+    if (containerRef.current && scrollerRef.current) {
+      const scrollerContent = Array.from(scrollerRef.current.children);
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        if (scrollerRef.current) {
+          scrollerRef.current.appendChild(duplicatedItem);
+        }
+      });
+      getDirection();
+      getSpeed();
+      setStart(true);
+    }
+  }, [containerRef, scrollerRef, getDirection, getSpeed]);
+
+  useEffect(() => {
+    addAnimation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [addAnimation]);
+
+  const [start, setStart] = useState(false);
+
   return (
     <div
       ref={containerRef}
@@ -116,7 +121,12 @@ export const InfiniteMovingCards = ({
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 {/* add this div for the profile img */}
                 <div className="me-3">
-                  <img src="/profile.svg" alt="profile" />
+                  <Image
+                    src="/profile.svg"
+                    alt="profile"
+                    width={32}
+                    height={32}
+                  />
                 </div>
                 <span className="flex flex-col gap-1">
                   {/* change text color, font-normal to font-bold, text-xl */}
