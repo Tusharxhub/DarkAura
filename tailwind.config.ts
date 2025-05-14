@@ -181,7 +181,7 @@ const config = {
         fourth: "fourth 80s cubic-bezier(0.77,0,0.175,1) infinite",
         fifth: "fifth 40s cubic-bezier(0.77,0,0.175,1) infinite",
         scroll:
-          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) cubic-bezier(0.77,0,0.175,1) infinite",
       },
     },
   },
