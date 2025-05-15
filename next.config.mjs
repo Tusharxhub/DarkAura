@@ -3,6 +3,9 @@ import { withSentryConfig } from "@sentry/nextjs";
 const nextConfig = {
   output: "export", // Enable static export
   trailingSlash: true, // Optional: for static hosting compatibility
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default withSentryConfig(
