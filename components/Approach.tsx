@@ -46,9 +46,7 @@ const Approach = () => {
         <Card
           title="Development & Launch"
           icon={<AceternityIcon order="Phase 3" />}
-          des="This is where the magic happens! Based on the approved design, 
-          I'll translate everything into functional code, building your website
-          from the ground up."
+          des="This is where the magic happens—I turn approved designs into functional, responsive code and build the website from the ground up."
         >
           <CanvasRevealEffect
             animationSpeed={3}
