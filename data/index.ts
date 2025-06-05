@@ -72,11 +72,11 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "Prepwise - AI-Powered Mock Interview Platform",
-    des: "From Mock to Mastery – AI That Prepares You to Win.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg"],
-    link: "https://prepwise-w6ml.vercel.app/",
+    title: "GTA VI — Fan Landing Page",
+des: "A sleek, high-energy landing page concept for GTA 6 — built with Next.js, Tailwind, and vibes straight outta Vice City. Just a fan tribute to the most hyped game in the world.",
+img: "/p1.svg",
+    iconLists: ["/re.svg", "/tail.svg", "/gsap.svg"],
+    link: "https://gta-6-pi.vercel.app/",
   },
   {
     id: 2,
